@@ -226,9 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-function copyEmail() {
+function handleEmail(el, e) {
+    e.preventDefault();
     navigator.clipboard.writeText('pradeep.kumaravel.work@gmail.com');
-    const toast = document.getElementById('toast');
-    toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2500);
+    el.textContent = '✓ Copied';
+    setTimeout(() => {
+        el.textContent = 'Say Hello';
+        window.location.href = el.href; // fires mailto after reset
+    }, 1500);
 }
